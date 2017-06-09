@@ -45,6 +45,6 @@ Make sure your indexes has **body**, **inlink** and **title** fields.
        <stemmed_query_file>  # e.g. ./data/cw.queries.stemmed
        ```
 4. Output
-    1. Features will be written into `./output/<partition_name>/high_level_features/{unigram, bigram}/<i>.features`. i is query ID (e.g. 0 to 200). 
+    1. Features will be written into `./output/<partition_name>/high_level_features/{unigram, bigram}/<i>.features`. i is query ID (e.g. 1 to 200). 
     1. Each line of **unigram** feature file has 16 items. shard_id {ql_score query_stats*4} * {body, title, inlink}
     2. Each line of **bigram** feature file has 2 items: shard_id bigram_log_count
