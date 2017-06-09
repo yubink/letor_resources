@@ -8,7 +8,7 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument("partition_name")
 parser.add_argument("--sleep", "-s", type=int, help="sleep time in seconds", default=90)
-parser.add_argument("--nbatch", "-n", type=int, help="submit n batches at one time", default=1)
+parser.add_argument("--nbatch", "-n", type=int, help="submit n batches at one time", default=5)
 parser.add_argument("--start", "-t", type=int, help="start from this line of shard file", default=1)
 parser.add_argument("--end", "-e", type=int, help="submit to this line of shard file", default=10000)
 args = parser.parse_args()
@@ -31,7 +31,7 @@ for line in open(base_dir + "/shards"):
         out = os.popen(query)
         nRunning = int(out.readline())
         print nRunning
-        if nRunning < 12:
+        if nRunning < 15:
             break
         time.sleep(args.sleep)
     cmd = "condor_submit " + job_path
