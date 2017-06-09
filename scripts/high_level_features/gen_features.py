@@ -56,7 +56,7 @@ def main():
         query_id, query = query.split(":")
         queries.append((query_id, query))
 
-    res_dir = base_dir + "/high_level_features/"
+    res_dir = base_dir + "/ltr_features/"
     if not os.path.exists(res_dir):
         os.makedirs(res_dir)
     unigram_dir = res_dir + "/unigram/"
