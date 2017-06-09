@@ -17,9 +17,9 @@
 ## Query Likelihood, Query statistics, Bigram counts
 0. Make sure your indexes has body, inlink and title fields.
 1. Compile shardFeature.cpp
-    1. Go to ./scripts/raw_features.
-    2. open Makefile.app. Change line2: `APP=shardFeature`. Save.
-    3. `make -f Makefile.app`. 
+    0. Go to ./scripts/raw_features.
+    1. Copy Pre-compiled with indri-5.2: `/bos/usr0/zhuyund/partition/letor_resources/scripts/raw_features/shardFeature`
+    2. Or open Makefile.app. Change line2: `APP=shardFeature`. Save. `make -f Makefile.app`. 
 3. Extract **raw** features (tf, df, etc.) from indexes.
     1.  Go back to root dir.
     2.  See `sample_raw_feat_script.sh`. Execute:
