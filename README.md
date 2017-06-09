@@ -1,15 +1,24 @@
 # letor_resources
 
 ## Features
+Put under `./output/<name>/ltr_features/`
 - CSI-based features
-    - Rank-S and ReDDE: use fedsearch software
-    - Distance to shard Centroid: *TODO Yubin*
+    - Rank-S and ReDDE
+        - use fedsearch software
+        - `./output/<name>/ltr_features/ranks/` and `./output/<name>/ltr_features/redde/`
+    - Distance to shard Centroid
+        - *TODO Yubin*
+        - `./output/<name>/ltr_features/dist_cent/`
 - Shard Popularity
     - *Todo Zhuyun.*
 - Term-based features
-    - Taily: provided by Yubin's Taily implementation
+    - Taily
+        - provided by Yubin's Taily implementation
+        - `./output/<name>/ltr_features/taily/`
     - Champion list: *TODO Yubin*
-    - Query Likelihood, Query term statistics, Bigram features: see instructions below.
+    - Query Likelihood, Query term statistics, Bigram features
+        - see instructions below.
+        - - `./output/<name>/ltr_features/unigram/` and - `./output/<name>/ltr_features/bigram/`
 
 ## LearningToRnk Model
 *TODO Zhuyun*
@@ -45,6 +54,6 @@ Make sure your indexes has **body**, **inlink** and **title** fields.
        <stemmed_query_file>  # e.g. ./data/cw.queries.stemmed
        ```
 4. Output
-    1. Features will be written into `./output/<partition_name>/high_level_features/{unigram, bigram}/<i>.features`. i is query ID (e.g. 1 to 200). 
+    1. Features will be written into `./output/<partition_name>/ltr_features/{unigram, bigram}/<i>.features`. i is query ID (e.g. 1 to 200). 
     1. Each line of **unigram** feature file has 16 items. shard_id {ql_score query_stats*4} * {body, title, inlink}
     2. Each line of **bigram** feature file has 2 items: shard_id bigram_log_count
