@@ -112,7 +112,10 @@ def main():
         for shard in shards:
             lm_scores = [str(lst_res_lm[i].get(shard, 'NAN')) for i in range(args.n_fields)]
             stats_scores = [str(lst_res_stats[i].get(shard, 'NAN')) for i in range(args.n_fields)]
-            unigram_outfile.write('{0} {1} {2}\n'.format(shard, ' '.join(lm_scores), ' '.join(stats_scores)))
+            unigram_outfile.write('{0}'.format(shard))
+            for i in range(args.n_fields):
+                unigram_outfile.write(' {0} {1}'.format(lm_scores[i], stats_scores[i]))
+            unigram_outfile.write('\n')
             bigram_outfile.write('{0} {1}\n'.format(shard, res_bigram.get(shard, 0)))
         unigram_outfile.close()
         bigram_outfile.close()
