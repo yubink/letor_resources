@@ -22,7 +22,7 @@
     2. Or open Makefile.app. Change line2: `APP=shardFeature`. Save. `make -f Makefile.app`. 
 3. Extract **raw** features (tf, df, etc.) from indexes.
     1.  Go back to root dir.
-    2.  See `sample_raw_feat_script.sh`. Execute:
+    2.  (See `sample_raw_feat_script.sh`) Execute:
         ```
          python ./scripts/raw_features/genShardFeatureJobs.py
          <partition_name>  # any name
