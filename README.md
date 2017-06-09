@@ -1,25 +1,17 @@
 # letor_resources
 
 ## Features
-Put under `./output/<name>/ltr_features/`
+Put features under `./output/<name>/ltr_features/`
 - CSI-based features
-    - Rank-S and ReDDE
-        - use fedsearch software
-        - `./output/<name>/ltr_features/ranks/` and `./output/<name>/ltr_features/redde/`
-    - Distance to shard Centroid
-        - *TODO Yubin*
-        - `./output/<name>/ltr_features/dist_cent/`
-- Shard Popularity
-    - *Todo Zhuyun.*
+    - Rank-S and ReDDE: use fedsearch software
+    - Distance to shard Centroid: *TODO Yubin*
+- Shard Popularity: *Todo Zhuyun.*
 - Term-based features
-    - Taily
-        - provided by Yubin's Taily implementation
-        - `./output/<name>/ltr_features/taily/`
+    - Taily: provided by Yubin's Taily implementation
     - Champion list: *TODO Yubin*
     - Query Likelihood, Query term statistics, Bigram features
         - see instructions below.
-        - `./output/<name>/ltr_features/unigram/` and - `./output/<name>/ltr_features/bigram/`
-
+        
 ## LearningToRnk Model
 *TODO Zhuyun*
 
