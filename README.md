@@ -18,7 +18,7 @@
 0. Make sure your indexes has body, inlink and title fields.
 1. Compile shardFeature.cpp
     0. Go to ./scripts/raw_features.
-    1. Copy Pre-compiled with indri-5.2: `/bos/usr0/zhuyund/partition/letor_resources/scripts/raw_features/shardFeature`
+    1. Copy Pre-compiled binary file (with indri-5.2): `/bos/usr0/zhuyund/partition/letor_resources/scripts/raw_features/shardFeature`
     2. Or open Makefile.app. Change line2: `APP=shardFeature`. Save. `make -f Makefile.app`. 
 3. Extract **raw** features (tf, df, etc.) from indexes.
     1.  Go back to root dir.
