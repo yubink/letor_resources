@@ -15,7 +15,7 @@
 *TODO Zhuyun*
 
 ## Query Likelihood, Query statistics, Bigram counts
-Make sure your indexes has body, inlink and title fields.
+Make sure your indexes has **body**, **inlink** and **title** fields.
 1. Compile shardFeature.cpp
     1. Go to ./scripts/raw_features.
     2. Copy Pre-compiled binary file (with indri-5.2): `/bos/usr0/zhuyund/partition/letor_resources/scripts/raw_features/shardFeature`
@@ -35,7 +35,7 @@ Make sure your indexes has body, inlink and title fields.
         ```
         python ./scripts/raw_features/job_submitter.py <partition_name>
         ```
-    5. Raw features of shard s will be written into `./output/<parititon_name>/features/<s>`.feat and `./output/<parititon_name>/features/<s>.feat_bigram`
+    5. Raw features of shard s will be written into `./output/<parititon_name>/features/<s>.feat` and `./output/<parititon_name>/features/<s>.feat_bigram`
 3.  Generate high level features (likelihood score, statistics, bigram log count)
     1. Make sure raw features are extracted.
     2. In root dir, do
