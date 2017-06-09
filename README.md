@@ -29,7 +29,7 @@ TODO Zhuyun
          <query_file>      # e.g. ./data/cw.queries
          -r <repo_dirs>    # a list of indexes. 
         ``` 
-        (see sample_raw_feat_script.sh)
+        (see **sample_raw_feat_script.sh**)
     3.  A bunch of condor jobs will be written into `./output/<partition_name>/jobs/`.  One job per shard. 
     4.  Submit jobs (Don't submit all jobs at one time! Submit in batches!). You can use:
         ```
