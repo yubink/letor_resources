@@ -18,7 +18,7 @@ Put under `./output/<name>/ltr_features/`
     - Champion list: *TODO Yubin*
     - Query Likelihood, Query term statistics, Bigram features
         - see instructions below.
-        - - `./output/<name>/ltr_features/unigram/` and - `./output/<name>/ltr_features/bigram/`
+        - `./output/<name>/ltr_features/unigram/` and - `./output/<name>/ltr_features/bigram/`
 
 ## LearningToRnk Model
 *TODO Zhuyun*
