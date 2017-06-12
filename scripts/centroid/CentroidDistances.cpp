@@ -301,16 +301,6 @@ int main(int argc, char * argv[]) {
 
           double klScore = KLDiverence(centroidMap[shardno], featVector);
           double cosineScore = cosineSimilarity(centroidMap[shardno], featVector);
-
-          if (shardno.compare("137") == 0) {
-            cout << extDocId << endl;
-            cout << klScore << endl;
-            cout << cosineScore << endl;
-            for (auto& iter : centroidMap[shardno]) {
-              cout << iter.first << ":" << iter.second << " ";
-            }
-            cout << endl;
-          }
           shardScores[shardno].push_back(distance_scores(lineCnt, klScore, cosineScore));
         }
         retFile.close();
