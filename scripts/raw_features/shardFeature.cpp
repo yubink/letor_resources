@@ -158,7 +158,10 @@ void get_document_vector(indri::index::Index *index,
     indri::utility::greedy_vector <indri::index::FieldExtent> fieldVec = list->fields();
     indri::utility::greedy_vector<indri::index::FieldExtent>::iterator fIter = fieldVec.begin();
 
-    int docLens[nFields] = {0, 0, 0, 0};
+    int docLens[nFields];
+    for(int i = 0; i < nFields; i++){
+        docLens[i] = 0;
+    }
     int fdx;
     while(fIter != fieldVec.end())
     {
@@ -337,7 +340,7 @@ int main(int argc, char **argv){
     indri::collection::Repository repos[nRepos];
     QueryEnvironment IndexEnvs[nRepos];
     for(i = 0; i < nRepos; i++) {
-        IndexEnvs[i].addIndex (repoPaths[i]);
+        IndexEnvs[i].addIndex(repoPaths[i]);
         indri::index::Index *index = NULL;
         indri::collection::Repository::index_state state;
         repos[i].openRead(repoPaths[i]);
@@ -385,7 +388,7 @@ int main(int argc, char **argv){
 
         for(i = 0; i < nRepos; i++){
             intids = IndexEnvs[i].documentIDsFromMetadata("docno", extids);
-            if (intids.size() < 1) continue;
+            if (intids.empty()) continue;
             intid = intids[0];
             if (intid > 0) break;
         }
