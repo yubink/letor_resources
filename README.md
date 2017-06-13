@@ -1,27 +1,43 @@
 # letor_resources
 
 ## Features
-Put under `./output/<name>/ltr_features/`
+Put features under `./output/<name>/ltr_features/`
 - CSI-based features
-    - Rank-S and ReDDE
-        - use fedsearch software
-        - `./output/<name>/ltr_features/ranks/` and `./output/<name>/ltr_features/redde/`
-    - Distance to shard Centroid
-        - *TODO Yubin*
-        - `./output/<name>/ltr_features/dist_cent/`
-- Shard Popularity
-    - *Todo Zhuyun.*
+    - Rank-S and ReDDE: use fedsearch software
+    - Distance to shard Centroid: see instructions below
+- Shard Popularity: *Todo Zhuyun.*
 - Term-based features
-    - Taily
-        - provided by Yubin's Taily implementation
-        - `./output/<name>/ltr_features/taily/`
+    - Taily: provided by Yubin's Taily implementation
     - Champion list: *TODO Yubin*
     - Query Likelihood, Query term statistics, Bigram features
         - see instructions below.
-        - `./output/<name>/ltr_features/unigram/` and - `./output/<name>/ltr_features/bigram/`
-
+        
 ## LearningToRnk Model
 *TODO Zhuyun*
+
+## Distance to shard centroid
+This is a CSI feature. It calculates how representative the documents
+retrieved from a CSI is of their shards where they came from. In concrete
+terms, it calculates the distance between the averaged language model of the
+retrieved documents and their origin shard's centroid.
+
+Necessary script is located under ./scripts/centroid. You need Indri installed
+in your home directory in order for this to work. (i.e. Indri was installed
+with --prefix=/bos/usr0/YOUR_USERNAME) You also need the C++ Boost library.
+
+1. Build program by running `make`
+2. Run program `./CentroidDistances -c centroidsDir -i indriIndex -s sampleDir -o outDir -l shardList`
+  * centroidsDir: A directory that contains files, one per shard, where the
+    file content is the centroid for that shard. Each line is in format: termid,weight
+    The name of each file should be its shardname with no extensions, and
+    should correspond to what is listed in the shardlist file (-l option).
+  * indriIndex: Location of the Indri index that was used to generate the centroids. 
+    This index is what the centroid files' termids refer to. 
+  * sampleDir: Directory contains a list of files named <queryNum>.filtered; each file
+    contains the TREC retrieval result for that query from a CSI (the CSI
+    itself does not need to be supplied)
+  * outDir: Directory to output feature files. Output files will end in ".features"
+  * shardList: File that contains a listing of all shard names, one per line.
 
 ## Query Likelihood, Query statistics, Bigram counts
 Make sure your indexes has **body**, **inlink** and **title** fields.
