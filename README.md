@@ -23,7 +23,7 @@ retrieved documents and their origin shard's centroid.
 
 Necessary script is located under ./scripts/centroid. You need Indri installed
 in your home directory in order for this to work. (i.e. Indri was installed
-with --prefix=/bos/usr0/YOUR_USERNAME)
+with --prefix=/bos/usr0/YOUR_USERNAME) You also need the C++ Boost library.
 
 1. Build program by running `make`
 2. Run program `./CentroidDistances -c centroidsDir -i indriIndex -s sampleDir -o outDir -l shardList`
