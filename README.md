@@ -15,6 +15,58 @@ Put features under `./output/<name>/ltr_features/`
 ## LearningToRnk Model
 *TODO Zhuyun*
 
+## Champion list
+This is a pre-calculated feature. It keeps track of the best N documents for
+each query term. At query time, it looks at how many of the best N documents
+each shard has and uses this as a feature. If there are multiple terms in a
+query, the scores of the terms are simply summed.
+
+This feature requires running two steps. First step is a C++ program that will
+extract and calculate the Indri/BM25 scores for the best N documents for every
+term in the index.  Then, a Python program reads the output of the first step
+and generates the actual feature file.
+
+Note, N is hardcoded as 1000 in the C++ file. Python file generates features
+for N=10,100 for both Indri and BM25.
+
+Scripts are located under ./scripts/champlist.  You need Indri installed in
+your home directory in order for compile the C++ code.  (i.e. Indri was
+installed with --prefix=/bos/usr0/YOUR_USERNAME) You also need the C++ Boost
+library.
+
+1. Build C++ program by running `make`
+2. Run program `./ChampionList -p paramFile -o outputDir`
+  * outputDir: Directory you want the term information to be dumped to.
+  * paramFile: Contains list of terms and indexes to dump them from in the
+    following format.
+    ```
+    index=path_of_index1:path_of_index2
+    terms=list:of:terms
+    ```
+    You can
+    list multiple indexes, if they are multiple random parititions of a
+    large collection like ClueWeb A. Note that they should be *random*
+    parititions for the output scores to be somewhat reliable! If they have
+    skewed language models like selective search shards, then the scores
+    dumped from each index is not comparable. (Don't use ~ in your index path.
+    It doesn't work with Indri.)
+    The terms listed should NOT be stemmed or stopped. The program will
+    process the term based on how the index you provided have stopped and
+    stemmed the terms. The output file will list terms in their original form. 
+    Indexes and terms should be colon (:) separated.
+    There is an example parameter file in `example_param.txt`
+3. Run Python script `./make_feats.py queryfile shardmap outdir [dumpfiles*]`
+  * queryfile: File that contains the queries, one per line in the format of
+    `qnum:all the query terms`
+  * shardmap: Directory that contains shard map files. Each file should be
+    named with the shard name (no extensions) and the shard name should contain at least
+    one numeral. Each file lists all the documents that belong to that shard
+    (should be external document number), one per line.
+  * outputDir: directory where the .features file should be created
+  * dumpfile: output of ChampionList. You can supply multiple .out files (e.g.
+    `outputDir/*.out`)
+
+
 ## Distance to shard centroid
 This is a CSI feature. It calculates how representative the documents
 retrieved from a CSI is of their shards where they came from. In concrete
