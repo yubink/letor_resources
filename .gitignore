@@ -1,2 +1,5 @@
 *.pyc
-
+output/*
+.*.swp
+.*.swo
+*.o
