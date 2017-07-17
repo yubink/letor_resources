@@ -1,0 +1,2 @@
+terms=unicorns:apple:love
+index=/bos/usr0/yubink/testindex/index:/bos/usr0/yubink/testindex/index2
