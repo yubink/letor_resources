@@ -52,7 +52,7 @@ def read_unigram_features(qid, feat_file_path, feats, feat_names):
 
             field_name = FIELD_NAMES[i]
 
-            lm_score, ctfmax, ctfmin, ctfidf_max, ctfidf_min = items[1 + i * 4 : 1 + (i + 1) * 4]
+            lm_score, ctfmax, ctfmin, ctfidf_max, ctfidf_min = items[1 + i * 5 : 1 + (i + 1) * 5]
 
             lm_index = feat_names.index("{0}_score".format(field_name))
             feats[qid][shardid][lm_index] = lm_score
@@ -75,8 +75,8 @@ def read_unigram_features(qid, feat_file_path, feats, feat_names):
 
         field_name = FIELD_NAMES[i]
         lm_index = feat_names.index("{0}_score".format(field_name))
-        lm_r_index = feat_names.index("{0}_r".format(feat_names))
-        lm_hist_index = feat_names.index("{0}_hist".format(feat_names))
+        lm_r_index = feat_names.index("{0}_r".format(field_name))
+        lm_hist_index = feat_names.index("{0}_hist".format(field_name))
 
         for shardid in feats[qid].keys():
             lm_scores.append((feats[qid][shardid][lm_index], shardid))
@@ -162,8 +162,8 @@ if __name__ == '__main__':
     feats = {}
 
     for qid in range(1, args.n_queries + 1):
-        unigram_file = open("{0}/{1}.features".format(unigram_dir, qid))
-        bigram_file = open("{0}/{1}.features".format(bigram_dir, qid))
+        unigram_file = "{0}/{1}.features".format(unigram_dir, qid)
+        bigram_file = "{0}/{1}.features".format(bigram_dir, qid)
 
         read_unigram_features(qid, unigram_file, feats, feat_names)
         read_bigram_features(qid, bigram_file, feats, feat_names)
