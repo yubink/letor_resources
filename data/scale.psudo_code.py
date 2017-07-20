@@ -1,3 +1,6 @@
+from sklearn.preprocessing import StandardScaler
+import cPickle
+
 scaler = cPickle.load(open("scaler.pkl", 'rb'))
 
 # read from ranksvm formt
